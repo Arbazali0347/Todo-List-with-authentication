@@ -1,0 +1,185 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+}
+
+body {
+  background-color: black;
+  color: white;
+  box-sizing: border-box;
+}
+
+.center-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.center {
+  background-color: rgb(43, 43, 43);
+  box-shadow: 1px 5px 101px -11px rgba(37, 215, 235, 0.43);
+  opacity: 1px;
+  width: 1000px;
+  height: 530px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Image {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image2 {
+  height: 90%;
+  width: 80%;
+  border-radius: 10px;
+}
+
+.image2 img {
+  border-radius: 15px;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  box-shadow: 8px 18px 31px 9px rgba(0, 0, 0, 0.76);
+}
+
+.login-side {
+  height: 100%;
+  width: 50%;
+}
+
+.items {
+  padding: 50px;
+}
+
+.items h1 {
+  font-size: 50px;
+  line-height: 8vh;
+}
+
+.items h1 span {
+  color: rgb(0, 229, 236);
+
+}
+
+.btn {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.btn p {
+  padding: 20px;
+}
+
+.invert {
+  filter: invert();
+}
+
+/* From Uiverse.io by iZOXVL */
+.boton-elegante {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 10px 30px;
+  border: 2px solid #2c2c2c;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border-radius: 30px;
+  transition: all 0.4s ease;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+  font-weight: bold;
+}
+
+.boton-elegante::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle,
+      rgba(255, 255, 255, 0.25) 0%,
+      rgba(255, 255, 255, 0) 70%);
+  transform: scale(0);
+  transition: transform 0.5s ease;
+}
+
+.boton-elegante:hover::after {
+  transform: scale(4);
+}
+
+.boton-elegante:hover {
+  border-color: #666666;
+  background: #292929;
+}
+
+@media (max-width: 600px) {
+  .center-main {
+    flex-direction: column;
+
+  }
+
+  .center {
+    flex-direction: column;
+    width: 86vw;
+    height: 95vh;
+  }
+
+  .btn {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: none;
+  }
+
+  .Image {
+    width: 100%;
+  }
+
+  .image2 {
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+
+  }
+
+  .items {
+    padding: 0;
+  }
+
+  .items h1 {
+    font-size: 10vw;
+    line-height: 6vh;
+  }
+
+  .boton-elegante {
+    padding: 10px 20px;
+    border-radius: 20px;
+  }
+
+  .login-side {
+    margin-top: 43px;
+    width: 91%;
+    text-align: center;
+  }
+  .btn p {
+  padding: 0;
+  margin-bottom: 10px;
+}
+
+}

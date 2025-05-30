@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo list app</title>
+    <link rel="stylesheet" href="/stylesheets/todo.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="center-main">
+        <div class="center">
+            <div class="first-nav">
+                <img src="/images/my-logo.png" alt="" width="120">
+                <button onclick="OnclickLogout()" class="boton-elegante blue">Logout</button>
+            </div>
+            <div class="nav-center">
+                <form class="input-container" method="post" action="/add-task" onsubmit="return validateTask();">
+                    <input name="usertask" type="text" id="username" placeholder="Enter task..." />
+                    <button type="submit" class="boton-elegante">Add</button>
+                </form>
+                <div class="title">
+                    <h1>Welcome Mr <span id="name-focus">
+                            <%= Name %>
+                        </span>
+                    </h1>
+                    <P class="disc">Hello, MrAro side Welcome for you</P>
+                </div>
+            </div>
+            <div class="todo-main">
+                <div id="timer">00:00:00</div>
+                <h1>ADD YOUR TODOS</h1>
+            </div>
+            <div class="Todo">
+                <ul>
+                    <% tasks.forEach(t=> { %>
+                        <li>
+                            <div class="card">
+                                <div class="text">
+                                    <%= t.task %>
+                                </div>
+                                <div class="time">
+                                    <%= t.createdAt.toLocaleString() %>
+                                </div>
+                                <div class="card-icon">
+                                    <form action="/delete-task/<%= t._id %>" method="post">
+                                        <button class="red" type="submit">Delete</button>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </li>
+                        <% }) %>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+    <script>
+        function OnclickLogout(){
+            window.location.href = "/logout"
+        }
+        function validateTask() {
+            const taskInput = document.getElementById("username").value.trim();
+            if (!taskInput) {
+                alert("Please enter a task before adding!");
+                return false; // form submit nahi hoga
+            }
+            return true;
+        }
+        function updateTimer() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+
+            document.getElementById('timer').textContent = `${hours}:${minutes}:${seconds}`;
+        }
+
+        // Timer update har second (1000 ms) chalega
+        setInterval(updateTimer, 1000);
+
+        // Pehle page load hote hi timer show karwa do
+        updateTimer();
+        // ------------------
+
+        const card = document.querySelector('.center');
+
+        // Dark color generator function
+        function getRandomDarkColor() {
+            // Dark colors have RGB values low-ish, e.g. 0-100
+            const r = Math.floor(Math.random() * 100);
+            const g = Math.floor(Math.random() * 100);
+            const b = Math.floor(Math.random() * 100);
+            return `rgb(${r}, ${g}, ${b})`;
+        }
+
+        function changeShadowColor() {
+            const color = getRandomDarkColor();
+            // Change box-shadow with new color
+            card.style.boxShadow = `0 0 30px 10px ${color}`;
+        }
+
+        // Har 1 second (1000ms) me color change karenge
+        setInterval(changeShadowColor, 1000);
+
+        // Pehle se hi ek shadow color set kar do
+        changeShadowColor();
+    </script>
+</body>
+
+</html>
