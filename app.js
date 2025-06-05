@@ -15,7 +15,7 @@ var usersRouter = require('./models/users');
 
 var app = express();
 
-mongoose.connect("mongodb+srv://arbazalicoder2025:Dw89jPECH145VIdb@todoapp.jvnel9o.mongodb.net/");
+mongoose.connect("mongodb+srv://arbazalicoder2025:Dw89jPECH145VIdb@todoapp.jvnel9o.mongodb.net/TodoDb");
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
